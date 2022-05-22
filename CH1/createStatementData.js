@@ -37,17 +37,7 @@ class PerformanceCalculator {
     this.play = aPlay;
   }
   get amount() {
-    let result = 0;
-    switch (this.play.type) {
-      case "tragedy":
-        throw new Error("use TragedyCalculator");
-      case "comedy":
-        throw new Error("use ComedyCalculator");
-      default:
-        throw new Error(`알수 없는 장르: ${this.play.type}`);
-    }
-
-    return result;
+    throw new Error("use SubClasses of PerformanceCalculator");
   }
 
   get volumeCredits() {
