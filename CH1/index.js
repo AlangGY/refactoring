@@ -1,7 +1,7 @@
-const invoices = require("./invoices.json");
-const plays = require("./plays.json");
-const getBill = require("./getBill.js").default;
+import { statement } from "./getBill.js";
+import invoices from "./invoices.json";
+import plays from "./plays.json";
 
 for (const invoice of invoices) {
-  console.log(getBill(invoice, plays));
+  console.log(statement(invoice, plays));
 }
