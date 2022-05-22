@@ -1,6 +1,6 @@
-import { htmlStatement, statement } from "./getBill.js";
-import invoices from "./invoices.json";
-import plays from "./plays.json";
+import { htmlStatement, statement } from "../getBill.js";
+import invoices from "../invoices.json";
+import plays from "../plays.json";
 
 const properBill = `청구 내역 (고객명: BigCo)
   Hamlet: $650.00 (55석)

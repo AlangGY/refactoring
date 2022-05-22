@@ -1,6 +1,6 @@
-import invoices from "./invoices.json";
-import plays from "./plays.json";
-import createStatementData from "./createStatementData";
+import invoices from "../invoices.json";
+import plays from "../plays.json";
+import createStatementData from "../createStatementData";
 
 const STATEMENT_DATAS = [
   {
