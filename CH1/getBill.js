@@ -7,12 +7,12 @@ function statement(invoice, plays) {
     volumeCredits += volumeCreditsFor(perf);
 
     // 청구 내역 출력
-    result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${
+    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${
       perf.audience
     }석)\n`;
     totalAmount += amountFor(perf);
   }
-  result += `총액: ${usd(totalAmount / 100)}\n`;
+  result += `총액: ${usd(totalAmount)}\n`;
   result += `적립 포인트: ${volumeCredits}점\n`;
   return result;
 
@@ -21,7 +21,7 @@ function statement(invoice, plays) {
       style: "currency",
       currency: "USD",
       minimumFractionDigits: 2,
-    }).format(aNumber);
+    }).format(aNumber / 100);
   }
 
   function volumeCreditsFor(aPerformance) {
