@@ -6,14 +6,6 @@ export default function createStatementData(invoice, plays) {
   result.totalVolumeCredits = totalVolumeCredits(result);
   return result;
 
-  function totalVolumeCredits(data) {
-    return data.performances.reduce((total, p) => total + p.volumeCredits, 0);
-  }
-
-  function totalAmountFor(data) {
-    return data.performances.reduce((total, p) => total + p.amount, 0);
-  }
-
   function enrichPerformances(aPerformance) {
     const calculator = createPerformanceCalculator(
       aPerformance,
@@ -28,6 +20,14 @@ export default function createStatementData(invoice, plays) {
 
   function playFor(aPerformance) {
     return plays[aPerformance.playID];
+  }
+
+  function totalVolumeCredits(data) {
+    return data.performances.reduce((total, p) => total + p.volumeCredits, 0);
+  }
+
+  function totalAmountFor(data) {
+    return data.performances.reduce((total, p) => total + p.amount, 0);
   }
 }
 
