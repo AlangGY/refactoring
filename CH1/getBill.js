@@ -8,11 +8,11 @@ function statement(invoice, plays) {
     }석)\n`;
   }
 
-  result += `총액: ${usd(getTotalAmount())}\n`;
+  result += `총액: ${usd(totalAmount())}\n`;
   result += `적립 포인트: ${totalVolumeCredits()}점\n`;
   return result;
 
-  function getTotalAmount() {
+  function totalAmount() {
     let result = 0;
     for (let perf of invoice.performances) {
       result += amountFor(perf);
