@@ -4,14 +4,6 @@ export function statement(invoice, plays) {
   return renderPlainText(createStatementData(invoice, plays));
 }
 
-function usd(aNumber) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(aNumber / 100);
-}
-
 function renderPlainText(data) {
   let result = `청구 내역 (고객명: ${data.customer})\n`;
 
@@ -55,4 +47,12 @@ function renderHTML(data) {
   result += `<p>적립 포인트: <em>${data.totalVolumeCredits}</em>점</p>`;
 
   return result;
+}
+
+function usd(aNumber) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(aNumber / 100);
 }
