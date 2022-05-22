@@ -2,10 +2,10 @@ function statement(invoice, plays) {
   const statementData = {};
   statementData.customer = invoice.customer;
   statementData.performances = invoice.performances.map(enrichPerformances);
-  statementData.totalAmount = totalAmount(statementData);
+  statementData.totalAmount = totalAmountFor(statementData);
   return renderPlainText(statementData);
 
-  function totalAmount(data) {
+  function totalAmountFor(data) {
     let result = 0;
     for (let perf of data.performances) {
       result += perf.amount;
