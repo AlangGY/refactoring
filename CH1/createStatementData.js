@@ -1,3 +1,36 @@
+export default function createStatementData(invoice, plays) {
+  const result = {};
+  result.customer = invoice.customer;
+  result.performances = invoice.performances.map(enrichPerformances);
+  result.totalAmount = totalAmountFor(result);
+  result.totalVolumeCredits = totalVolumeCredits(result);
+  return result;
+
+  function totalVolumeCredits(data) {
+    return data.performances.reduce((total, p) => total + p.volumeCredits, 0);
+  }
+
+  function totalAmountFor(data) {
+    return data.performances.reduce((total, p) => total + p.amount, 0);
+  }
+
+  function enrichPerformances(aPerformance) {
+    const calculator = new PerformanceCalculator(
+      aPerformance,
+      playFor(aPerformance)
+    );
+    const result = { ...aPerformance };
+    result.play = calculator.play;
+    result.amount = calculator.amount;
+    result.volumeCredits = calculator.volumeCredits;
+    return result;
+  }
+
+  function playFor(aPerformance) {
+    return plays[aPerformance.playID];
+  }
+}
+
 class PerformanceCalculator {
   constructor(aPerformance, aPlay) {
     this.performance = aPerformance;
@@ -33,38 +66,5 @@ class PerformanceCalculator {
       result += Math.floor(this.performance.audience / 5);
 
     return result;
-  }
-}
-
-export default function createStatementData(invoice, plays) {
-  const result = {};
-  result.customer = invoice.customer;
-  result.performances = invoice.performances.map(enrichPerformances);
-  result.totalAmount = totalAmountFor(result);
-  result.totalVolumeCredits = totalVolumeCredits(result);
-  return result;
-
-  function totalVolumeCredits(data) {
-    return data.performances.reduce((total, p) => total + p.volumeCredits, 0);
-  }
-
-  function totalAmountFor(data) {
-    return data.performances.reduce((total, p) => total + p.amount, 0);
-  }
-
-  function enrichPerformances(aPerformance) {
-    const calculator = new PerformanceCalculator(
-      aPerformance,
-      playFor(aPerformance)
-    );
-    const result = { ...aPerformance };
-    result.play = calculator.play;
-    result.amount = calculator.amount;
-    result.volumeCredits = calculator.volumeCredits;
-    return result;
-  }
-
-  function playFor(aPerformance) {
-    return plays[aPerformance.playID];
   }
 }
