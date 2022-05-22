@@ -1,4 +1,4 @@
-import getBill from "./getBill.js";
+import { statement } from "./getBill.js";
 import invoices from "./invoices.json";
 import plays from "./plays.json";
 
@@ -27,7 +27,7 @@ describe("getBill", () => {
   test("invoices.json and plays.json will return bill properly", () => {
     let result = "";
     for (const invoice of invoices) {
-      result += getBill(invoice, plays) + "\n";
+      result += statement(invoice, plays) + "\n";
     }
 
     result = result.trimEnd();
