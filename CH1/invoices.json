@@ -15,5 +15,39 @@
         "audience": 40
       }
     ]
+  },
+  {
+    "customer": "Alang",
+    "performances": [
+      {
+        "playID": "hamlet",
+        "audience": 20
+      },
+      {
+        "playID": "as-like",
+        "audience": 70
+      },
+      {
+        "playID": "othello",
+        "audience": 40
+      }
+    ]
+  },
+  {
+    "customer": "jeong woon",
+    "performances": [
+      {
+        "playID": "hamlet",
+        "audience": 90
+      },
+      {
+        "playID": "as-like",
+        "audience": 5
+      },
+      {
+        "playID": "othello",
+        "audience": 10
+      }
+    ]
   }
 ]

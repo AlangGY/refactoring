@@ -1,0 +1,17 @@
+{
+  "name": "CH1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "getBill.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
