@@ -7,9 +7,8 @@ export function distanceTraveled(
   result = distanceBy(0, acceleration(primaryForce, mass), primaryTime);
   const secondaryTime = time - delay; // 두번쨰 힘 이후 소요된 시간
   if (secondaryTime > 0) {
-    const primaryVelocity = acceleration(primaryForce, mass) * delay;
     result += distanceBy(
-      primaryVelocity,
+      velocity(acceleration(primaryForce, mass), delay),
       acceleration(primaryForce + secondaryForce, mass),
       secondaryTime
     );
@@ -20,6 +19,11 @@ export function distanceTraveled(
   function acceleration(force, mass) {
     // a = F / m
     return force / mass;
+  }
+
+  function velocity(acceleration, time) {
+    // v = a * t
+    return acceleration * time;
   }
 
   function distanceBy(initialVelocity, acceleration, time) {
