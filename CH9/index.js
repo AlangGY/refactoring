@@ -12,7 +12,7 @@ export function distanceTraveled(
   if (secondaryTime > 0) {
     const primaryVelocity = primaryAcceleration * delay;
     result +=
-      primaryVelocity * secondaryTime +
+      distanceByVelocity(primaryVelocity, secondaryTime) +
       distanceByAcceleration(
         acceleration(primaryForce + secondaryForce, mass),
         secondaryTime
@@ -24,6 +24,10 @@ export function distanceTraveled(
   function acceleration(force, mass) {
     // a = F / m
     return force / mass;
+  }
+
+  function distanceByVelocity(velocity, time) {
+    return velocity * time;
   }
 
   function distanceByAcceleration(acceleration, time) {
