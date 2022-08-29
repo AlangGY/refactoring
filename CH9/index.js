@@ -1,18 +1,18 @@
-export function distanceTraveled(scenario, time) {
+export function distanceTraveled(
+  { primaryForce, secondaryForce, mass, delay },
+  time
+) {
   let result;
-  const primaryAcceleration = acceleration(
-    scenario.primaryForce,
-    scenario.mass
-  ); // F = ma_1
-  const primaryTime = Math.min(time, scenario.delay);
+  const primaryAcceleration = acceleration(primaryForce, mass);
+  const primaryTime = Math.min(time, delay);
   result = 0.5 * primaryAcceleration * primaryTime * primaryTime; // 1/2 * a * t^2
-  const secondaryTime = time - scenario.delay; // 두번쨰 힘 이후 소요된 시간
+  const secondaryTime = time - delay; // 두번쨰 힘 이후 소요된 시간
   if (secondaryTime > 0) {
-    const primaryVelocity = primaryAcceleration * scenario.delay;
+    const primaryVelocity = primaryAcceleration * delay;
     const secondaryAcceleration = acceleration(
-      scenario.primaryForce + scenario.secondaryForce,
-      scenario.mass
-    ); // (F1 + F2) = ma_2
+      primaryForce + secondaryForce,
+      mass
+    );
     result +=
       primaryVelocity * secondaryTime +
       0.5 * secondaryAcceleration * secondaryTime * secondaryTime;
@@ -21,6 +21,7 @@ export function distanceTraveled(scenario, time) {
   return result;
 
   function acceleration(force, mass) {
+    // a = F / m
     return force / mass;
   }
 }
