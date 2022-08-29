@@ -4,8 +4,8 @@ export function distanceTraveled(
 ) {
   let result;
   const primaryTime = Math.min(time, delay);
-  result = distanceBy(0, acceleration(primaryForce, mass), primaryTime);
   const secondaryTime = time - delay; // 두번쨰 힘 이후 소요된 시간
+  result = distanceBy(0, acceleration(primaryForce, mass), primaryTime);
   result += distanceBy(
     velocity(acceleration(primaryForce, mass), delay),
     acceleration(primaryForce + secondaryForce, mass),
