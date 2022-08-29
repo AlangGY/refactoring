@@ -1,4 +1,4 @@
-function distanceTraveled(scenario, time) {
+export function distanceTraveled(scenario, time) {
   let result;
   let acc = scenario.primaryForce / scenario.mass; // F = ma_1
   let primaryTime = Math.min(time, scenario.delay);
