@@ -10,8 +10,8 @@ export function distanceTraveled(
     mass
   );
   return (
-    distanceBy(0, primaryAcceleration, primaryTime) +
-    distanceBy(
+    distance(0, primaryAcceleration, primaryTime) +
+    distance(
       velocity(primaryAcceleration, delay),
       secondaryAcceleration,
       secondaryTime
@@ -28,7 +28,8 @@ export function distanceTraveled(
     return acceleration * time;
   }
 
-  function distanceBy(initialVelocity, acceleration, time) {
+  function distance(initialVelocity, acceleration, time) {
+    // d = v * t + 1/2 * a * t^2
     if (time <= 0) return 0;
 
     return initialVelocity * time + 0.5 * acceleration * time * time;
