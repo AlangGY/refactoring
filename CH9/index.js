@@ -1,7 +1,7 @@
 import { acceleration, distance, velocity } from "./utils/kineticEquations";
 
 export function distanceTraveled(
-  { primaryForce, secondaryForce, mass, delay },
+  { initialVelocity = 0, primaryForce, secondaryForce, mass, delay },
   time
 ) {
   const primaryTime = Math.min(time, delay);
@@ -12,9 +12,9 @@ export function distanceTraveled(
     mass
   );
   return (
-    distance(0, primaryAcceleration, primaryTime) +
+    distance(initialVelocity, primaryAcceleration, primaryTime) +
     distance(
-      velocity(primaryAcceleration, delay),
+      initialVelocity + velocity(primaryAcceleration, delay),
       secondaryAcceleration,
       secondaryTime
     )
