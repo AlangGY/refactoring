@@ -4,10 +4,7 @@ export function distanceTraveled(
 ) {
   let result;
   const primaryTime = Math.min(time, delay);
-  result = distanceByAcceleration(
-    acceleration(primaryForce, mass),
-    primaryTime
-  );
+  result = distanceBy(0, acceleration(primaryForce, mass), primaryTime);
   const secondaryTime = time - delay; // 두번쨰 힘 이후 소요된 시간
   if (secondaryTime > 0) {
     const primaryVelocity = acceleration(primaryForce, mass) * delay;
@@ -27,14 +24,5 @@ export function distanceTraveled(
 
   function distanceBy(initialVelocity, acceleration, time) {
     return initialVelocity * time + 0.5 * acceleration * time * time;
-  }
-
-  function distanceByVelocity(velocity, time) {
-    return velocity * time;
-  }
-
-  function distanceByAcceleration(acceleration, time) {
-    // 1/2 * a * t^2
-    return 0.5 * acceleration * time * time;
   }
 }
