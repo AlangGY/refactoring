@@ -36,11 +36,11 @@ class Bird {
     // 깃털 상태
     switch (this.type) {
       case "유럽 제비":
-        return "보통이다";
+        throw new Error("Method not implemented");
       case "아프리카 제비":
-        return this.numberOfCoconuts > 2 ? "지쳤다" : "보통이다";
+        throw new Error("Method not implemented");
       case "노르웨이 파랑 앵무":
-        return this.voltage > 100 ? "그을렸다" : "예쁘다";
+        throw new Error("Method not implemented");
       default:
         return "알수 없다";
     }
@@ -61,8 +61,20 @@ class Bird {
   }
 }
 
-class EuropeanSwallow extends Bird {}
+class EuropeanSwallow extends Bird {
+  get plumage() {
+    return "보통이다";
+  }
+}
 
-class AfricanSwallow extends Bird {}
+class AfricanSwallow extends Bird {
+  get plumage() {
+    return this.numberOfCoconuts > 2 ? "지쳤다" : "보통이다";
+  }
+}
 
-class NorwegianBlueParrot extends Bird {}
+class NorwegianBlueParrot extends Bird {
+  get plumage() {
+    return this.voltage > 100 ? "그을렸다" : "예쁘다";
+  }
+}
