@@ -1,10 +1,5 @@
 export function rating(voyage, history) {
-  // 투자 등급
-  const vpf = new Rating(voyage, history).voyageProfitFactor;
-  const vr = new Rating(voyage, history).voyageRisk;
-  const chr = new Rating(voyage, history).captainHistoryRisk;
-  if (vpf * 3 > vr + chr * 2) return "A";
-  else return "B";
+  return new Rating(voyage, history).value;
 }
 
 class Rating {
@@ -13,7 +8,14 @@ class Rating {
     this.history = history;
   }
 
-  get value() {}
+  get value() {
+    // 투자 등급
+    const vpf = this.voyageProfitFactor;
+    const vr = this.voyageRisk;
+    const chr = this.captainHistoryRisk;
+    if (vpf * 3 > vr + chr * 2) return "A";
+    else return "B";
+  }
 
   get voyageRisk() {
     // 항해 경로 위험요소
