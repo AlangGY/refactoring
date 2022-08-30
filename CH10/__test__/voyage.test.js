@@ -1,7 +1,7 @@
 import { rating } from "../voyage";
 
 describe("voyage", () => {
-  test("", () => {
+  test("rating B", () => {
     const voyage = { zone: "서인도", length: 10 };
     const history = [
       {
@@ -15,5 +15,13 @@ describe("voyage", () => {
 
     const myRating = rating(voyage, history);
     expect(myRating).toBe("B");
+  });
+
+  test("rating A", () => {
+    const voyage = { zone: "중국", length: 13 };
+    const history = [{ zone: "중국", profit: 10 }];
+
+    const myRating = rating(voyage, history);
+    expect(myRating).toBe("A");
   });
 });
