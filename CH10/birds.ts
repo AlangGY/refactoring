@@ -27,16 +27,26 @@ function createBird(bird) {
   }
 }
 
-class Bird {
+abstract class BirdAbstract {
+  numberOfCoconuts: number;
+  voltage: number;
+  isNailed: boolean;
+
   constructor(birdObject) {
     Object.assign(this, birdObject);
   }
 
+  abstract get plumage(): string;
+
+  abstract get airSpeedVelocity(): number | null;
+}
+
+class Bird extends BirdAbstract {
   get plumage() {
     return "알수 없다";
   }
 
-  get airSpeedVelocity() {
+  get airSpeedVelocity(): number | null {
     return null;
   }
 }
