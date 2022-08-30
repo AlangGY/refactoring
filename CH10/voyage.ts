@@ -29,7 +29,6 @@ abstract class RatingAbstract {
   abstract voyageRisk: number;
   abstract captainHistoryRisk: number;
   abstract voyageProfitFactor: number;
-  abstract hasChinaHistory: boolean;
   abstract historyLengthFactor: number;
   abstract voyageLengthFactor: number;
 }
@@ -70,10 +69,6 @@ class Rating extends RatingAbstract {
     result += this.historyLengthFactor;
     result += this.voyageLengthFactor;
     return result;
-  }
-
-  get hasChinaHistory() {
-    return this.history.some((v) => "중국" === v.zone);
   }
 
   get historyLengthFactor() {
