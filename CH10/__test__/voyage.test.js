@@ -18,7 +18,7 @@ describe("voyage", () => {
   });
 
   test("rating A", () => {
-    const voyage = { zone: "중국", length: 13 };
+    const voyage = { zone: "중국", length: 14 };
     const history = [{ zone: "중국", profit: 10 }];
 
     const myRating = rating(voyage, history);
