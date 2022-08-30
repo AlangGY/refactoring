@@ -30,7 +30,6 @@ abstract class RatingAbstract {
     const vpf = this.voyageProfitFactor;
     const vr = this.voyageRisk;
     const chr = this.captainHistoryRisk;
-    console.log(vpf * 3, vr + chr * 2);
     if (vpf * 3 > vr + chr * 2) return "A";
     else return "B";
   }
