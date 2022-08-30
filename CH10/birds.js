@@ -40,11 +40,11 @@ class Bird {
     // 비행 속도
     switch (this.type) {
       case "유럽 제비":
-        return 35;
+        throw new Error("method not implemented");
       case "아프리카 제비":
-        return 40 - 2 * this.numberOfCoconuts;
+        throw new Error("method not implemented");
       case "노르웨이 파랑 앵무":
-        return this.isNailed ? 0 : 10 + this.voltage / 10;
+        throw new Error("method not implemented");
       default:
         return null;
     }
@@ -55,16 +55,28 @@ class EuropeanSwallow extends Bird {
   get plumage() {
     return "보통이다";
   }
+
+  get airSpeedVelocity() {
+    return 35;
+  }
 }
 
 class AfricanSwallow extends Bird {
   get plumage() {
     return this.numberOfCoconuts > 2 ? "지쳤다" : "보통이다";
   }
+
+  get airSpeedVelocity() {
+    return 40 - 2 * this.numberOfCoconuts;
+  }
 }
 
 class NorwegianBlueParrot extends Bird {
   get plumage() {
     return this.voltage > 100 ? "그을렸다" : "예쁘다";
+  }
+
+  get airSpeedVelocity() {
+    return this.isNailed ? 0 : 10 + this.voltage / 10;
   }
 }
