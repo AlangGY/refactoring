@@ -7,11 +7,11 @@ export function speeds(birds) {
 }
 
 function plumage(bird) {
-  return new Bird(bird).plumage();
+  return new Bird(bird).plumage;
 }
 
 function airSpeedVelocity(bird) {
-  return new Bird(bird).airSpeedVelocity();
+  return new Bird(bird).airSpeedVelocity;
 }
 
 class Bird {
@@ -19,7 +19,7 @@ class Bird {
     Object.assign(this, birdObject);
   }
 
-  plumage() {
+  get plumage() {
     // 깃털 상태
     switch (this.type) {
       case "유럽 제비":
@@ -33,7 +33,7 @@ class Bird {
     }
   }
 
-  airSpeedVelocity() {
+  get airSpeedVelocity() {
     // 비행 속도
     switch (this.type) {
       case "유럽 제비":
