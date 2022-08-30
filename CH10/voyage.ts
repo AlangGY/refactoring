@@ -19,12 +19,14 @@ function createRating(voyage: Voyage, history: History[]) {
   return new Rating(voyage, history);
 }
 
-class Rating {
+abstract class RatingAbstract {
   constructor(public voyage: Voyage, public history: History[]) {
     this.voyage = voyage;
     this.history = history;
   }
+}
 
+class Rating extends RatingAbstract {
   get value() {
     // 투자 등급
     const vpf = this.voyageProfitFactor;
