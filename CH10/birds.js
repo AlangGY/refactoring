@@ -10,6 +10,10 @@ function plumage(bird) {
   return new Bird(bird).plumage();
 }
 
+function airSpeedVelocity(bird) {
+  return new Bird(bird).airSpeedVelocity();
+}
+
 class Bird {
   constructor(birdObject) {
     Object.assign(this, birdObject);
@@ -42,8 +46,4 @@ class Bird {
         return null;
     }
   }
-}
-
-function airSpeedVelocity(bird) {
-  return new Bird(bird).airSpeedVelocity();
 }
