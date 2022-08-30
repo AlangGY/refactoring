@@ -33,17 +33,7 @@ class Bird {
   }
 
   get plumage() {
-    // 깃털 상태
-    switch (this.type) {
-      case "유럽 제비":
-        throw new Error("Method not implemented");
-      case "아프리카 제비":
-        throw new Error("Method not implemented");
-      case "노르웨이 파랑 앵무":
-        throw new Error("Method not implemented");
-      default:
-        return "알수 없다";
-    }
+    return "알수 없다";
   }
 
   get airSpeedVelocity() {
