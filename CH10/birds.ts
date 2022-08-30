@@ -1,17 +1,15 @@
 export function plumages(birds) {
-  return new Map(birds.map((b) => [b.name, plumage(b)]));
+  return new Map(
+    birds.map((b) => createBird(b)).map((bird) => [bird.name, bird.plumage])
+  );
 }
 
 export function speeds(birds) {
-  return new Map(birds.map((b) => [b.name, airSpeedVelocity(b)]));
-}
-
-function plumage(bird) {
-  return createBird(bird).plumage;
-}
-
-function airSpeedVelocity(bird) {
-  return createBird(bird).airSpeedVelocity;
+  return new Map(
+    birds
+      .map((b) => createBird(b))
+      .map((bird) => [bird.name, bird.airSpeedVelocity])
+  );
 }
 
 function createBird(bird) {
