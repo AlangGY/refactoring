@@ -20,7 +20,7 @@ function createRating(voyage: Voyage, history: History[]) {
 }
 
 abstract class RatingAbstract {
-  constructor(public voyage: Voyage, public history: History[]) {
+  constructor(protected voyage: Voyage, protected history: History[]) {
     this.voyage = voyage;
     this.history = history;
   }
