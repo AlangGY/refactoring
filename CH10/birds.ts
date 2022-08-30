@@ -23,7 +23,7 @@ function createBird(bird) {
     case "노르웨이 파랑 앵무":
       return new NorwegianBlueParrot(bird);
     default:
-      return new Bird(bird);
+      return new UnknownBird(bird);
   }
 }
 
@@ -41,7 +41,7 @@ abstract class BirdAbstract {
   abstract get airSpeedVelocity(): number | null;
 }
 
-class Bird extends BirdAbstract {
+class UnknownBird extends BirdAbstract {
   get plumage() {
     return "알수 없다";
   }
@@ -51,7 +51,7 @@ class Bird extends BirdAbstract {
   }
 }
 
-class EuropeanSwallow extends Bird {
+class EuropeanSwallow extends BirdAbstract {
   get plumage() {
     return "보통이다";
   }
@@ -61,7 +61,7 @@ class EuropeanSwallow extends Bird {
   }
 }
 
-class AfricanSwallow extends Bird {
+class AfricanSwallow extends BirdAbstract {
   get plumage() {
     return this.numberOfCoconuts > 2 ? "지쳤다" : "보통이다";
   }
@@ -71,7 +71,7 @@ class AfricanSwallow extends Bird {
   }
 }
 
-class NorwegianBlueParrot extends Bird {
+class NorwegianBlueParrot extends BirdAbstract {
   get plumage() {
     return this.voltage > 100 ? "그을렸다" : "예쁘다";
   }
