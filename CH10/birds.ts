@@ -34,14 +34,18 @@ function createBird(bird: Bird) {
 }
 
 abstract class BirdAbstract {
-  name!: string;
-  type!: string;
-  numberOfCoconuts!: number;
-  voltage!: number;
-  isNailed!: boolean;
+  name: string;
+  type: string;
+  protected numberOfCoconuts: number;
+  protected voltage: number;
+  protected isNailed: boolean;
 
   constructor(birdObject: Bird) {
-    Object.assign(this, birdObject);
+    this.name = birdObject.name;
+    this.type = birdObject.type;
+    this.numberOfCoconuts = birdObject.numberOfCoconuts;
+    this.voltage = birdObject.voltage;
+    this.isNailed = birdObject.isNailed;
   }
 
   abstract get plumage(): string;
