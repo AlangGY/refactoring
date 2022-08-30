@@ -35,15 +35,15 @@ abstract class RatingAbstract {
     else return "B";
   }
 
-  protected abstract voyageProfitFactor: number;
-  protected abstract voyageRisk: number;
-  protected abstract captainHistoryRisk: number;
-  protected abstract historyLengthFactor: number;
-  protected abstract voyageLengthFactor: number;
-  protected abstract voyageZoneFactor: number;
-}
+  protected get voyageProfitFactor() {
+    // 수익 요인
+    let result = 2;
+    result += this.historyLengthFactor;
+    result += this.voyageLengthFactor;
+    result += this.voyageZoneFactor;
+    return result;
+  }
 
-class Rating extends RatingAbstract {
   protected get voyageRisk() {
     // 항해 경로 위험요소
     let result = 1;
@@ -61,15 +61,12 @@ class Rating extends RatingAbstract {
     return Math.max(result, 0);
   }
 
-  protected get voyageProfitFactor() {
-    // 수익 요인
-    let result = 2;
-    result += this.voyageZoneFactor;
-    result += this.historyLengthFactor;
-    result += this.voyageLengthFactor;
-    return result;
-  }
+  protected abstract historyLengthFactor: number;
+  protected abstract voyageLengthFactor: number;
+  protected abstract voyageZoneFactor: number;
+}
 
+class Rating extends RatingAbstract {
   protected get voyageZoneFactor() {
     let result = 0;
     if (this.voyage.zone === "중국") result += 1;
