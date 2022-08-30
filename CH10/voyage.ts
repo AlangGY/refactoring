@@ -26,11 +26,11 @@ abstract class RatingAbstract {
   }
 
   abstract value: "A" | "B";
-  abstract voyageRisk: number;
-  abstract captainHistoryRisk: number;
-  abstract voyageProfitFactor: number;
-  abstract historyLengthFactor: number;
-  abstract voyageLengthFactor: number;
+  protected abstract voyageRisk: number;
+  protected abstract captainHistoryRisk: number;
+  protected abstract voyageProfitFactor: number;
+  protected abstract historyLengthFactor: number;
+  protected abstract voyageLengthFactor: number;
 }
 
 class Rating extends RatingAbstract {
