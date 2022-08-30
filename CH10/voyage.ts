@@ -1,8 +1,18 @@
-export function rating(voyage, history) {
+interface Voyage {
+  zone: string;
+  length: number;
+}
+
+interface History {
+  zone: string;
+  profit: number;
+}
+
+export function rating(voyage: Voyage, history: History[]) {
   return createRating(voyage, history).value;
 }
 
-function createRating(voyage, history) {
+function createRating(voyage: Voyage, history: History[]) {
   if (voyage.zone === "중국" && history.some((v) => v.zone === "중국")) {
     return new ExperiencedChinaRating(voyage, history);
   }
@@ -10,7 +20,7 @@ function createRating(voyage, history) {
 }
 
 class Rating {
-  constructor(voyage, history) {
+  constructor(public voyage: Voyage, public history: History[]) {
     this.voyage = voyage;
     this.history = history;
   }
@@ -60,7 +70,7 @@ class Rating {
     return this.history.length > 8 ? 1 : 0;
   }
 
-  get voyageLengthFactor() {
+  get voyageLengthFactor(): number {
     return this.voyage.length > 14 ? -1 : 0;
   }
 }
