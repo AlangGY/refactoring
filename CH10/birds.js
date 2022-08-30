@@ -37,17 +37,7 @@ class Bird {
   }
 
   get airSpeedVelocity() {
-    // 비행 속도
-    switch (this.type) {
-      case "유럽 제비":
-        throw new Error("method not implemented");
-      case "아프리카 제비":
-        throw new Error("method not implemented");
-      case "노르웨이 파랑 앵무":
-        throw new Error("method not implemented");
-      default:
-        return null;
-    }
+    return null;
   }
 }
 
