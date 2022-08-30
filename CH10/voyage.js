@@ -20,6 +20,7 @@ class Rating {
     const vpf = this.voyageProfitFactor;
     const vr = this.voyageRisk;
     const chr = this.captainHistoryRisk;
+    console.log(vpf * 3, vr + chr * 2);
     if (vpf * 3 > vr + chr * 2) return "A";
     else return "B";
   }
@@ -38,7 +39,6 @@ class Rating {
     let result = 1;
     if (this.history.length < 5) result += 4;
     result += this.history.filter((v) => v.profit < 0).length;
-    if (this.voyage.zone === "중국" && this.hasChinaHistory) result -= 2;
     return Math.max(result, 0);
   }
 
@@ -64,4 +64,9 @@ class Rating {
   }
 }
 
-class ExperiencedChinaRating extends Rating {}
+class ExperiencedChinaRating extends Rating {
+  get captainHistoryRisk() {
+    const result = super.captainHistoryRisk - 2;
+    return Math.max(result, 0);
+  }
+}
