@@ -24,6 +24,14 @@ abstract class RatingAbstract {
     this.voyage = voyage;
     this.history = history;
   }
+
+  abstract value: "A" | "B";
+  abstract voyageRisk: number;
+  abstract captainHistoryRisk: number;
+  abstract voyageProfitFactor: number;
+  abstract hasChinaHistory: boolean;
+  abstract historyLengthFactor: number;
+  abstract voyageLengthFactor: number;
 }
 
 class Rating extends RatingAbstract {
