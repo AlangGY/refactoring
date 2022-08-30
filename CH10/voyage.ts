@@ -25,15 +25,6 @@ abstract class RatingAbstract {
     this.history = history;
   }
 
-  abstract value: "A" | "B";
-  protected abstract voyageRisk: number;
-  protected abstract captainHistoryRisk: number;
-  protected abstract voyageProfitFactor: number;
-  protected abstract historyLengthFactor: number;
-  protected abstract voyageLengthFactor: number;
-}
-
-class Rating extends RatingAbstract {
   get value() {
     // 투자 등급
     const vpf = this.voyageProfitFactor;
@@ -44,6 +35,14 @@ class Rating extends RatingAbstract {
     else return "B";
   }
 
+  protected abstract voyageProfitFactor: number;
+  protected abstract voyageRisk: number;
+  protected abstract captainHistoryRisk: number;
+  protected abstract historyLengthFactor: number;
+  protected abstract voyageLengthFactor: number;
+}
+
+class Rating extends RatingAbstract {
   protected get voyageRisk() {
     // 항해 경로 위험요소
     let result = 1;
