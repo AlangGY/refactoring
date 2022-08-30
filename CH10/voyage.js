@@ -1,5 +1,12 @@
 export function rating(voyage, history) {
-  return new Rating(voyage, history).value;
+  return createRating(voyage, history).value;
+}
+
+function createRating(voyage, history) {
+  if (voyage.zone === "중국" && history.some((v) => v.zone === "중국")) {
+    return new ExperiencedChinaRating(voyage, history);
+  }
+  return new Rating(voyage, history);
 }
 
 class Rating {
@@ -56,3 +63,5 @@ class Rating {
     return this.history.some((v) => "중국" === v.zone);
   }
 }
+
+class ExperiencedChinaRating extends Rating {}
