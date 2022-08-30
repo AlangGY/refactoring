@@ -1,10 +1,18 @@
-export function plumages(birds) {
+interface Bird {
+  name: string;
+  type: string;
+  numberOfCoconuts: number;
+  voltage: number;
+  isNailed: boolean;
+}
+
+export function plumages(birds: Bird[]) {
   return new Map(
     birds.map((b) => createBird(b)).map((bird) => [bird.name, bird.plumage])
   );
 }
 
-export function speeds(birds) {
+export function speeds(birds: Bird[]) {
   return new Map(
     birds
       .map((b) => createBird(b))
@@ -12,7 +20,7 @@ export function speeds(birds) {
   );
 }
 
-function createBird(bird) {
+function createBird(bird: Bird) {
   switch (bird.type) {
     case "유럽 제비":
       return new EuropeanSwallow(bird);
@@ -26,11 +34,13 @@ function createBird(bird) {
 }
 
 abstract class BirdAbstract {
-  numberOfCoconuts: number;
-  voltage: number;
-  isNailed: boolean;
+  name!: string;
+  type!: string;
+  numberOfCoconuts!: number;
+  voltage!: number;
+  isNailed!: boolean;
 
-  constructor(birdObject) {
+  constructor(birdObject: Bird) {
     Object.assign(this, birdObject);
   }
 
