@@ -40,6 +40,7 @@ abstract class RatingAbstract {
   protected abstract captainHistoryRisk: number;
   protected abstract historyLengthFactor: number;
   protected abstract voyageLengthFactor: number;
+  protected abstract voyageZoneFactor: number;
 }
 
 class Rating extends RatingAbstract {
@@ -63,10 +64,16 @@ class Rating extends RatingAbstract {
   protected get voyageProfitFactor() {
     // 수익 요인
     let result = 2;
-    if (this.voyage.zone === "중국") result += 1;
-    if (this.voyage.zone === "동인도") result += 1;
+    result += this.voyageZoneFactor;
     result += this.historyLengthFactor;
     result += this.voyageLengthFactor;
+    return result;
+  }
+
+  protected get voyageZoneFactor() {
+    let result = 0;
+    if (this.voyage.zone === "중국") result += 1;
+    if (this.voyage.zone === "동인도") result += 1;
     return result;
   }
 
