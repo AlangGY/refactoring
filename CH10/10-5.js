@@ -56,4 +56,5 @@ export class UnknownCustomer {
   get billingPlan() {
     return registry.billingPlans.basic;
   }
+  set billingPlan(arg) {}
 }

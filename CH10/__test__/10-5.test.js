@@ -25,19 +25,13 @@ describe("customer name", () => {
 describe("billing plan", () => {
   test("known customer", () => {
     const aCustomer = site.customer;
-    expect(getPlan(aCustomer)).toBe(4);
+    expect(aCustomer.billingPlan).toBe(4);
   });
 
   test("unknown customer", () => {
     const aCustomer = site2.customer;
-    expect(getPlan(aCustomer)).toBe(5);
+    expect(aCustomer.billingPlan).toBe(5);
   });
-
-  function getPlan(customer) {
-    return isUnknown(customer)
-      ? registry.billingPlans.basic
-      : customer.billingPlan;
-  }
 });
 
 // Client 3
@@ -55,7 +49,7 @@ describe("plan", () => {
   });
 
   function setPlan(customer, plan) {
-    if (!isUnknown(customer)) customer.billingPlan = plan;
+    customer.billingPlan = plan;
   }
 });
 
