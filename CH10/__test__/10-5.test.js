@@ -20,19 +20,12 @@ beforeEach(() => {
 describe("customer name", () => {
   test("known customer", () => {
     const aCustomer = site.customer;
-    expect(getCustomerName(aCustomer)).toBe("Alang");
+    expect(aCustomer.name).toBe("Alang");
   });
   test("unknown customer", () => {
     const aCustomer = site2.customer;
-    expect(getCustomerName(aCustomer)).toBe("거주자");
+    expect(aCustomer.name).toBe("거주자");
   });
-
-  function getCustomerName(customer) {
-    let customerName;
-    if (isUnknown(customer)) customerName = "거주자";
-    else customerName = customer.name;
-    return customerName;
-  }
 });
 // Client 2
 describe("billing plan", () => {
