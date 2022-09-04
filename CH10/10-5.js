@@ -1,10 +1,22 @@
-class Site {
+export class Site {
+  constructor(customer) {
+    this._customer = customer;
+  }
+
   get customer() {
     return this._customer;
   }
 }
 
-class Customer {
+export class Customer {
+  constructor({ ...args }) {
+    this._name = args.name;
+    this._billingPlan = args.billingPlan;
+    this._paymentHistory = {
+      weeksDelinquentInLastYear: 3,
+    };
+  }
+
   get name() {
     return this._name;
   }
