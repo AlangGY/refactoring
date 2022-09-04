@@ -66,9 +66,7 @@ describe("weeksDelinquent", () => {
   });
 
   function getWeeksDelinquent(aCustomer) {
-    return isUnknown(aCustomer)
-      ? 0
-      : aCustomer.paymentHistory.weeksDelinquentInLastYear;
+    return aCustomer.paymentHistory.weeksDelinquentInLastYear;
   }
 });
 

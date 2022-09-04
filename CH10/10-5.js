@@ -57,4 +57,14 @@ export class UnknownCustomer {
     return registry.billingPlans.basic;
   }
   set billingPlan(arg) {}
+
+  get paymentHistory() {
+    return new NullPaymentHistory();
+  }
+}
+
+class NullPaymentHistory {
+  get weeksDelinquentInLastYear() {
+    return 0;
+  }
 }
