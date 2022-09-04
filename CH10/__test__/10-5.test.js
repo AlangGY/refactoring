@@ -1,6 +1,7 @@
-import { Customer, Site } from "../10-5";
+import { Customer, Site, UnknownCustomer } from "../10-5";
 
 let site = new Site(new Customer({ name: "Alang", billingPlan: 4 }));
+let site2 = new Site("미확인 고객");
 
 const registry = {
   billingPlans: {
@@ -10,6 +11,7 @@ const registry = {
 
 beforeEach(() => {
   site = new Site(new Customer({ name: "Alang", billingPlan: 4 }));
+  site2 = new Site("미확인 고객");
 });
 
 // Client 1
@@ -21,7 +23,7 @@ describe("customer name", () => {
     expect(getCustomerName(aCustomer)).toBe("Alang");
   });
   test("unknown customer", () => {
-    const aCustomer = "미확인 고객";
+    const aCustomer = site2.customer;
     expect(getCustomerName(aCustomer)).toBe("거주자");
   });
 
@@ -40,7 +42,7 @@ describe("billing plan", () => {
   });
 
   test("unkown customer", () => {
-    const aCustomer = "미확인 고객";
+    const aCustomer = site2.customer;
     expect(getPlan(aCustomer)).toBe(5);
   });
 
@@ -60,7 +62,7 @@ describe("plan", () => {
   });
 
   test("unknown customer", () => {
-    const aCustomer = "미확인 고객";
+    const aCustomer = site2.customer;
     setPlan(aCustomer, 2);
     expect(aCustomer?.billingPlan).toBeUndefined();
   });
@@ -78,7 +80,7 @@ describe("weeksDelinquent", () => {
   });
 
   test("unknown customer", () => {
-    const aCustomer = "미확인 고객";
+    const aCustomer = site2.customer;
     expect(getWeeksDelinquent(aCustomer)).toBe(0);
   });
 
@@ -90,7 +92,7 @@ describe("weeksDelinquent", () => {
 });
 
 function isUnknown(arg) {
-  if (!(arg instanceof Customer || arg === "미확인 고객"))
+  if (!(arg instanceof Customer || arg instanceof UnknownCustomer))
     throw new Error(`잘못된 값과 비교: <${arg}>`);
-  return arg === "미확인 고객";
+  return arg.isUnknown;
 }
