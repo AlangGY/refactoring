@@ -27,7 +27,7 @@ describe("customer name", () => {
 
   function getCustomerName(customer) {
     let customerName;
-    if (customer === "미확인 고객") customerName = "거주자";
+    if (isUnknown(customer)) customerName = "거주자";
     else customerName = customer.name;
     return customerName;
   }
@@ -45,7 +45,7 @@ describe("billing plan", () => {
   });
 
   function getPlan(customer) {
-    return customer === "미확인 고객"
+    return isUnknown(customer)
       ? registry.billingPlans.basic
       : customer.billingPlan;
   }
@@ -66,7 +66,7 @@ describe("plan", () => {
   });
 
   function setPlan(customer, plan) {
-    if (customer !== "미확인 고객") customer.billingPlan = plan;
+    if (!isUnknown(customer)) customer.billingPlan = plan;
   }
 });
 
@@ -83,8 +83,14 @@ describe("weeksDelinquent", () => {
   });
 
   function getWeeksDelinquent(aCustomer) {
-    return aCustomer === "미확인 고객"
+    return isUnknown(aCustomer)
       ? 0
       : aCustomer.paymentHistory.weeksDelinquentInLastYear;
   }
 });
+
+function isUnknown(arg) {
+  if (!(arg instanceof Customer || arg === "미확인 고객"))
+    throw new Error(`잘못된 값과 비교: <${arg}>`);
+  return arg === "미확인 고객";
+}
