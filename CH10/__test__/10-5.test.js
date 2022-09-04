@@ -1,13 +1,7 @@
-import { Customer, Site, UnknownCustomer } from "../10-5";
+import { Customer, registry, Site, UnknownCustomer } from "../10-5";
 
 let site = new Site(new Customer({ name: "Alang", billingPlan: 4 }));
 let site2 = new Site("미확인 고객");
-
-const registry = {
-  billingPlans: {
-    basic: 5,
-  },
-};
 
 beforeEach(() => {
   site = new Site(new Customer({ name: "Alang", billingPlan: 4 }));
@@ -34,7 +28,7 @@ describe("billing plan", () => {
     expect(getPlan(aCustomer)).toBe(4);
   });
 
-  test("unkown customer", () => {
+  test("unknown customer", () => {
     const aCustomer = site2.customer;
     expect(getPlan(aCustomer)).toBe(5);
   });
@@ -57,7 +51,7 @@ describe("plan", () => {
   test("unknown customer", () => {
     const aCustomer = site2.customer;
     setPlan(aCustomer, 2);
-    expect(aCustomer?.billingPlan).toBeUndefined();
+    expect(aCustomer.billingPlan).toBe(5);
   });
 
   function setPlan(customer, plan) {

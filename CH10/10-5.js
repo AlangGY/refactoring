@@ -1,3 +1,9 @@
+export const registry = {
+  billingPlans: {
+    basic: 5,
+  },
+};
+
 export class Site {
   constructor(customer) {
     this._customer = customer;
@@ -45,5 +51,9 @@ export class UnknownCustomer {
 
   get name() {
     return "거주자";
+  }
+
+  get billingPlan() {
+    return registry.billingPlans.basic;
   }
 }
