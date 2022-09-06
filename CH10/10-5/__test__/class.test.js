@@ -1,4 +1,4 @@
-import { Customer, registry, Site, UnknownCustomer } from "../10-5";
+import { Customer, registry, Site, UnknownCustomer } from "../js/class";
 
 let site = new Site(new Customer({ name: "Alang", billingPlan: 4 }));
 let site2 = new Site("미확인 고객");
