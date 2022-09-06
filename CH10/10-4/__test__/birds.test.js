@@ -1,4 +1,4 @@
-import { plumages, speeds } from "../birds";
+import { plumages, speeds } from "../ts/birds";
 
 describe("birds", () => {
   const birds = [
