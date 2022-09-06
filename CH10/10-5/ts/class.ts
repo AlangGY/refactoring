@@ -1,4 +1,4 @@
-export const registry = {
+const registry = {
   billingPlans: {
     basic: 5,
   },
@@ -24,13 +24,21 @@ export class Site {
   }
 }
 
-export class Customer {
-  _name: string;
-  _billingPlan: number;
-  _paymentHistory: PaymentHistory;
-  constructor({ ...args }) {
-    this._name = args.name;
-    this._billingPlan = args.billingPlan;
+abstract class CustomerAbs {
+  abstract readonly name: string;
+  abstract billingPlan: number;
+  abstract paymentHistory: PaymentHistory;
+}
+
+export class Customer extends CustomerAbs {
+  private _name: string;
+  private _billingPlan: number;
+  private _paymentHistory: PaymentHistory;
+
+  constructor({ name, billingPlan }: { name: string; billingPlan: number }) {
+    super();
+    this._name = name;
+    this._billingPlan = billingPlan;
     this._paymentHistory = {
       weeksDelinquentInLastYear: 3,
     };
@@ -39,6 +47,7 @@ export class Customer {
   get name() {
     return this._name;
   }
+
   get billingPlan() {
     return this._billingPlan;
   }
@@ -51,7 +60,7 @@ export class Customer {
   }
 }
 
-export class UnknownCustomer {
+export class UnknownCustomer extends CustomerAbs {
   get name() {
     return "거주자";
   }
