@@ -1,4 +1,7 @@
-function alertForMiscreant(people){
+import { setOffAlarms } from "./alert";
+
+
+export function alertForMiscreant(people){
     for (const p of people){
         if (p === '조커'){
             setOffAlarms();
