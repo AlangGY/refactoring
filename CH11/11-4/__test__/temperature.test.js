@@ -1,4 +1,4 @@
-import { HeatingPlan } from "../temperature";
+import { HeatingPlan } from "../ts/temperature";
 
 const aRoom = {
   daysTempRange: {
