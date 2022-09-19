@@ -7,13 +7,10 @@ const aRoom = {
   },
 };
 
-const low = aRoom.daysTempRange.low;
-const high = aRoom.daysTempRange.high;
-
 const alert = jest.fn(() => {});
 
 const alertIfTemperatureOutOfRange = (heatingPlan) => {
-  if (!heatingPlan.withinRange(low, high)) {
+  if (!heatingPlan.xxNEWwithinRange(aRoom.daysTempRange)) {
     alert();
   }
 };
