@@ -6,6 +6,6 @@ describe("party", () => {
   });
 
   test("", () => {
-    expect(new Department().totalAnnualCost).toBe(24);
+    expect(new Department().annualCost).toBe(24);
   });
 });
