@@ -1,5 +1,5 @@
-import * as module from "../11-1/index";
-import * as alertModule from "../11-1/alert";
+import * as module from "../index";
+import * as alertModule from "../alert";
 
 const alertMockFn = jest.spyOn(alertModule, "setOffAlarms");
 
